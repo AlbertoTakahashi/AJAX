@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui" >     
+
+    <h:head>       
+    </h:head>
+    <h:body>
+        <h2>JSF 2.0 + Ajax Hello World Example MODIFICADO</h2>
+        <h:form>
+
+            <h:panelGrid columns="2" cellpadding="3">
+                <h:outputText value="Nome: "></h:outputText>
+                <p:inputText value="#{helloBean.nome}"></p:inputText>
+                <h:outputText value="Programa: "></h:outputText>
+                <p:selectOneMenu id="program" value="#{helloBean.programa}">
+                    <f:selectItem itemValue="0" itemLabel="#{helloBean.program(0)}"></f:selectItem>
+                    <f:selectItem itemValue="1" itemLabel="#{helloBean.program(1)}"></f:selectItem>
+                    <f:selectItem itemValue="2" itemLabel="#{helloBean.program(2)}"></f:selectItem>                
+                    <f:selectItem itemValue="3" itemLabel="#{helloBean.program(3)}"></f:selectItem>                
+                </p:selectOneMenu>
+                <h:outputText value="Data: "></h:outputText>
+                <p:inputMask value="#{helloBean.data}" mask="99-99-9999"></p:inputMask>
+                <p:commandButton value="Welcome Me" action="#{helloBean.sayWelcome()}" update="@form"></p:commandButton>
+            </h:panelGrid>
+
+            <h2><h:outputText value="Welcome #{helloBean.nome}" rendered="#{helloBean.mostrarNome}"></h:outputText></h2>
+            <h2><h:outputText value="#{helloBean.program(helloBean.programa)}" rendered="#{helloBean.mostrarPrograma}"></h:outputText></h2>
+            <h2><h:outputText value="#{helloBean.data}" rendered="#{helloBean.mostrarData}"></h:outputText></h2>
+
+        </h:form>
+        <br></br>
+    </h:body>
+</html>
+
+
